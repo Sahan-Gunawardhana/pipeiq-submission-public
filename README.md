@@ -1,4 +1,4 @@
-# PipeIQ Public Submission
+# PipeIQ Public
 
 This is a public-repository-safe copy of the project. It contains source code, package files, and the bundled local risk model, but no Firebase keys or service-account secrets.
 
