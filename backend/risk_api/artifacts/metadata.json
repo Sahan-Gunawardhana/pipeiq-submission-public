@@ -1,0 +1,51 @@
+{
+  "generated_utc": "2026-06-16 05:56 UTC",
+  "data": "v3_training_dataset/processed.csv",
+  "model_name": "xgb_v5_calibrated_final",
+  "artifact_filename": "xgb_v7_calibrated.joblib",
+  "split": "stratified train/test -> calibration holdout",
+  "n_rows": 77972,
+  "n_features_input": 22,
+  "numeric_cols": [
+    "install_year",
+    "diameter_mm",
+    "pipe_length_m",
+    "elevation_m",
+    "pressure_bar",
+    "n_past_repairs",
+    "depth_m",
+    "pipe_age_years",
+    "install_year_was_invalid",
+    "repair_rate",
+    "pressure_age",
+    "length_pressure",
+    "elevation_pressure",
+    "depth_pressure",
+    "is_old_pipe",
+    "high_pressure"
+  ],
+  "categorical_cols": [
+    "material",
+    "road_category",
+    "soil_type",
+    "dma_zone",
+    "material_group",
+    "diameter_bin"
+  ],
+  "selected_params": {
+    "n_estimators": 500,
+    "max_depth": 5,
+    "learning_rate": 0.04,
+    "subsample": 0.85,
+    "colsample_bytree": 0.9
+  },
+  "calibrated_selected_threshold": 0.25,
+  "thresholds_path": "risk_api/artifacts/feature_thresholds.json",
+  "model_path": "risk_api/artifacts/xgb_v7_calibrated.joblib",
+  "notes": [
+    "Replacement API artifact trained from the new v3 cleaned/material-standardised dataset experiment.",
+    "Final V5-style calibrated XGBoost pipeline with Platt scaling.",
+    "risk_score = calibrated P(failed=1)",
+    "confidence_score = 1 - H(p)/log(2) where H(p) is Bernoulli entropy computed on calibrated p"
+  ]
+}

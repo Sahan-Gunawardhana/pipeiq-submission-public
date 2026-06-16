@@ -1,0 +1,10 @@
+{
+  "asof_year": 2025,
+  "pipe_length_cap_value": 922.6531999999995,
+  "pressure_clip_low": 3.0971,
+  "pressure_clip_high": 6.35,
+  "old_age_years": 30.0,
+  "high_pressure_threshold": 5.76,
+  "diameter_q33": 90.0,
+  "diameter_q66": 110.0
+}

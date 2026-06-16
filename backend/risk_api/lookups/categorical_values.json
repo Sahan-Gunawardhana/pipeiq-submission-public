@@ -1,0 +1,198 @@
+{
+  "generated_utc": "2026-04-01 05:47 UTC",
+  "data": "pipeline_data_3/v3/dataset/processed.csv",
+  "columns": {
+    "diameter_bin": [
+      {
+        "value": "small",
+        "count": 37004
+      },
+      {
+        "value": "medium",
+        "count": 21028
+      },
+      {
+        "value": "large",
+        "count": 19940
+      }
+    ],
+    "dma_zone": [
+      {
+        "value": "Kundasale Core",
+        "count": 21103
+      },
+      {
+        "value": "Pallekele / BOI",
+        "count": 20406
+      },
+      {
+        "value": "Tennekumbura",
+        "count": 18592
+      },
+      {
+        "value": "Ampitiya",
+        "count": 17871
+      }
+    ],
+    "material": [
+      {
+        "value": "PVC",
+        "count": 52851
+      },
+      {
+        "value": "HDPE",
+        "count": 6228
+      },
+      {
+        "value": "pvc",
+        "count": 3415
+      },
+      {
+        "value": "P.V.C",
+        "count": 3403
+      },
+      {
+        "value": "PVC-U",
+        "count": 3311
+      },
+      {
+        "value": "pvvc",
+        "count": 3194
+      },
+      {
+        "value": "DI",
+        "count": 2464
+      },
+      {
+        "value": "GI",
+        "count": 835
+      },
+      {
+        "value": "hdpe",
+        "count": 494
+      },
+      {
+        "value": "H.D.P.E.",
+        "count": 462
+      },
+      {
+        "value": "High Density PE",
+        "count": 445
+      },
+      {
+        "value": "D.I.",
+        "count": 234
+      },
+      {
+        "value": "di",
+        "count": 185
+      },
+      {
+        "value": "D-Iron",
+        "count": 157
+      },
+      {
+        "value": "Galv Iron",
+        "count": 107
+      },
+      {
+        "value": "gi",
+        "count": 98
+      },
+      {
+        "value": "G.I.",
+        "count": 89
+      }
+    ],
+    "material_group": [
+      {
+        "value": "plastic",
+        "count": 66744
+      },
+      {
+        "value": "other",
+        "count": 10031
+      },
+      {
+        "value": "metal",
+        "count": 1197
+      }
+    ],
+    "road_category": [
+      {
+        "value": "Main Road (A26)",
+        "count": 24565
+      },
+      {
+        "value": "Minor Road",
+        "count": 17699
+      },
+      {
+        "value": "B-Class Road",
+        "count": 10522
+      },
+      {
+        "value": "Pradeshiya Sabha Road",
+        "count": 10293
+      },
+      {
+        "value": "Private Road",
+        "count": 3571
+      },
+      {
+        "value": "Estate Path",
+        "count": 3567
+      },
+      {
+        "value": " Main Road (A26) ",
+        "count": 2764
+      },
+      {
+        "value": " Minor Road ",
+        "count": 1840
+      },
+      {
+        "value": " Pradeshiya Sabha Road ",
+        "count": 1185
+      },
+      {
+        "value": " B-Class Road ",
+        "count": 1131
+      },
+      {
+        "value": " Private Road ",
+        "count": 425
+      },
+      {
+        "value": " Estate Path ",
+        "count": 410
+      }
+    ],
+    "soil_type": [
+      {
+        "value": "Red-Yellow Podzolic Soil",
+        "count": 34195
+      },
+      {
+        "value": "Immature Brown Loams (IBL)",
+        "count": 10272
+      },
+      {
+        "value": "Reddish Brown Latosolic Soil",
+        "count": 10165
+      },
+      {
+        "value": "Alluvial Soils",
+        "count": 10095
+      },
+      {
+        "value": "Mountain Regosols",
+        "count": 9687
+      },
+      {
+        "value": "Red-Brown Earths",
+        "count": 3558
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "42_73_01": {
+    "dma_zone_locality": "Kundasale Core",
+    "nwsdb_scheme": "Kundasale-Haragama",
+    "primary_context": "Main A26 corridor, Warapitiya, and Kundasale town."
+  },
+  "42_71_01": {
+    "dma_zone_locality": "Tennekumbura",
+    "nwsdb_scheme": "Kundasale-Haragama",
+    "primary_context": "Entrance to Kandy, steep hilly areas, and higher elevations."
+  },
+  "42_72_01": {
+    "dma_zone_locality": "Ampitiya",
+    "nwsdb_scheme": "Kundasale-Haragama",
+    "primary_context": "Heavily residential areas with older GI/DI legacy pipes."
+  },
+  "42_74_01": {
+    "dma_zone_locality": "Pallekele / BOI",
+    "nwsdb_scheme": "Kundasale-Haragama",
+    "primary_context": "Industrial zone, high traffic, and massive 225mm transmission mains."
+  }
+}
+
