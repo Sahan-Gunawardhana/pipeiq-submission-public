@@ -426,6 +426,44 @@ This project demonstrates product-management and product-ownership work beyond i
 
 The roadmap reflects the product's progression from a mapping prototype into a connected planning and field-operations proof of concept. Future phases are organized around operational outcomes and adoption risk rather than individual technical features.
 
+### Roadmap at a glance
+
+```mermaid
+flowchart TB
+    START([Product starting point])
+
+    subgraph DELIVERED[Delivered proof-of-concept evolution]
+        direction LR
+        M1[1. Network foundation<br/>GIS map and Firebase records]
+        M2[2. Operational workspace<br/>CRUD, dashboards, filters, and onboarding]
+        M3[3. Risk prioritization<br/>Model API, scoring, bands, and resilience]
+        M4[4. Field operations<br/>Mobile map, GPS, repair capture, and evidence]
+        M5[5. Resilient feedback loop<br/>Offline sync, prediction snapshots, and export]
+        M1 --> M2 --> M3 --> M4 --> M5
+    end
+
+    CURRENT{{Current product boundary<br/>Operational proof of concept}}
+
+    subgraph PLANNED[Planned product maturity]
+        direction LR
+        P1[6. Pilot readiness<br/>Access control, security, audits, and UAT]
+        P2[7. Workflow adoption<br/>Assignments, review, notifications, and data quality]
+        P3[8. Decision quality<br/>Model evaluation, governance, and controlled candidates]
+        P4[9. Portfolio planning<br/>Interventions, budgets, programmes, and integrations]
+        P5[10. Scale and improvement<br/>Multi-area operations, analytics, and governance]
+        P1 --> P2 --> P3 --> P4 --> P5
+    end
+
+    FINISH([Target product state<br/>Governed infrastructure planning platform])
+
+    START --> M1
+    M5 --> CURRENT
+    CURRENT -. Future delivery .-> P1
+    P5 --> FINISH
+```
+
+The diagram represents product maturity and dependency order, not committed delivery dates. Everything before the current product boundary is represented in this repository; everything after it is planned work.
+
 ### Evolution to date
 
 | Milestone | Product outcome | Delivered capabilities |
