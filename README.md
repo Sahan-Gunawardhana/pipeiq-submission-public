@@ -27,10 +27,20 @@ Provide water utility teams with a dependable operational view of network condit
 | Network planners | Understand system condition and prioritize work | GIS network map, risk layers, filters, and dashboards |
 | Operations managers | Monitor pipelines, zones, assets, and repair activity | Shared operational records and summary views |
 | Field technicians | Record repair evidence at the point of work | GPS-assisted mobile repair workflow with image support |
-| Data and engineering teams | Evaluate model behaviour against real outcomes | Prediction snapshots and ground-truth feedback records |
+| Data and engineering teams | Inspect model behaviour alongside field outcomes | Prediction snapshots linked to field-reported repair records |
 | Department leadership | Improve traceability and planning confidence | Consistent data model and visible risk prioritization |
 
+## Delivery Status
+
+| Status | Included in this repository |
+| --- | --- |
+| Implemented | Web GIS map, infrastructure CRUD workflows, dashboards, risk and confidence display, Node scoring API, bundled model service, mobile map, repair capture, offline queue, reconnect synchronization, prediction snapshots, and feedback export |
+| Proof-of-concept utility | Feedback and retraining-support views used to inspect collected records; these views do not train, validate, promote, or deploy a model |
+| Not implemented | Enterprise authentication, role-based authorization, complete audit trails, work-order management, automated retraining, automatic model replacement, enterprise integrations, and production monitoring |
+
 ## Current Product Capabilities
+
+The capabilities in this section are present in the repository. They remain proof-of-concept implementations rather than production-certified departmental services.
 
 ### Web GIS workspace
 
@@ -65,10 +75,10 @@ Provide water utility teams with a dependable operational view of network condit
 
 - Repair records linked to the selected pipeline
 - Snapshot of the prediction that existed when the repair was recorded
-- Ground-truth feedback collection for later model evaluation
+- Field-reported repair feedback stored with prediction context for later analysis
 - Utility views for inspecting and exporting collected feedback
 
-The feedback module collects evidence for future model evaluation. It does not automatically retrain or replace the deployed model.
+The Firestore collection is named `ground_truth_feedback`, but its records originate from user-entered repair reports. They are not independently verified labels. The module collects evidence for future evaluation and does not train, validate, or replace the deployed model.
 
 ## Product Scope and Boundaries
 
@@ -94,7 +104,7 @@ The following measurement framework can be used for a pilot deployment. Targets 
 | Data reliability | Successful repair synchronization rate and duplicate-record rate |
 | Decision traceability | Percentage of repair records linked to both a pipeline and its prior prediction context |
 | Service reliability | Backend readiness, prediction success rate, and queue recovery time |
-| Model evaluation readiness | Number and coverage of verified feedback records available for analysis |
+| Model evaluation readiness | Number and coverage of reviewed feedback records available for analysis |
 
 ## Product Architecture
 
@@ -111,7 +121,7 @@ flowchart LR
     F -->|Repair records and evidence| D
     F -->|Offline repair queue| G[(Device Storage)]
     G -->|Reconnect and synchronize| D
-    D --> H[Ground-Truth Feedback]
+    D --> H[Field Repair Feedback]
 ```
 
 ### Architectural responsibilities
@@ -145,7 +155,7 @@ If the model service is unavailable, the pipeline remains in a bounded browser q
 3. The user selects the affected pipeline and records repair details.
 4. Images are uploaded when connectivity is available.
 5. The pipeline repair count, history, depth, and latest repair information are updated transactionally.
-6. A ground-truth record stores the repair outcome and the prediction snapshot available at that time.
+6. A feedback record stores the field-reported repair outcome and the prediction snapshot available at that time.
 
 When offline, the repair is stored locally and replayed after connectivity returns.
 
@@ -383,7 +393,7 @@ For a deployed web application, set `NEXT_PUBLIC_BACKEND_API_BASE` to the public
 - Departmental deployments should enforce authenticated access and role-based authorization before production use.
 - CORS limits browser origins; it is not an authentication control and does not prevent direct API clients.
 - Model outputs should support, not replace, engineering review and operational accountability.
-- Ground-truth records should follow organizational retention, privacy, and data-quality policies.
+- Field repair feedback should follow organizational retention, privacy, review, and data-quality policies.
 
 ## Non-Functional Product Goals
 
@@ -395,7 +405,7 @@ For a deployed web application, set `NEXT_PUBLIC_BACKEND_API_BASE` to the public
 | Data integrity | Firestore transactions, duplicate repair checks, validation, and normalized records |
 | Maintainability | Separation between web, mobile, product API, and model service |
 | Portability | Environment-based configuration and Docker backend packaging |
-| Traceability | Repair history and prediction snapshots stored with feedback records |
+| Traceability | Repair history and prediction snapshots stored with field feedback records |
 
 ## Product Development Learning Outcomes
 
@@ -407,7 +417,7 @@ This project demonstrates product-management and product-ownership work beyond i
 4. **Workflow design:** connecting planning, prediction, field repair, and feedback into an end-to-end product journey.
 5. **Architecture trade-offs:** balancing speed of delivery, managed services, deployment cost, maintainability, and model independence.
 6. **Resilience planning:** treating connectivity loss and model cold starts as product requirements rather than isolated technical failures.
-7. **Data-product thinking:** capturing verified outcomes and prediction context so future model performance can be evaluated responsibly.
+7. **Data-product thinking:** capturing field-reported outcomes and prediction context as a foundation for later reviewed model evaluation.
 8. **Trust and explainability:** exposing risk bands, confidence, model status, and failure states instead of hiding uncertainty.
 9. **Iterative delivery:** evolving map controls, field pipeline selection, coordinate handling, offline repair capture, and operational dashboards through repeated feedback.
 10. **Product governance:** identifying authentication, authorization, data quality, model review, and auditability as prerequisites for departmental rollout.
@@ -424,7 +434,7 @@ The roadmap reflects the product's progression from a mapping prototype into a c
 | 2. Operational workspace | Move from map viewing to infrastructure management | Geometry and attribute editing, deletion, dashboards, filters, map modes, navigation, onboarding, and consistent risk colours |
 | 3. Risk prioritization | Introduce model-assisted maintenance planning | Bundled XGBoost service, risk and confidence bands, product-facing Node API, deployment health checks, and resilient scoring queue |
 | 4. Field operations | Connect office planning with repair activity | Mobile network map, GPS and manual coordinates, nearby-pipeline matching, searchable selection, image evidence, depth updates, and repair history |
-| 5. Resilient feedback loop | Preserve field work and capture model evidence | Offline repair queue, reconnect synchronization, duplicate protection, prediction snapshots, ground-truth records, and feedback export |
+| 5. Resilient feedback loop | Preserve field work and capture model evidence | Offline repair queue, reconnect synchronization, duplicate protection, prediction snapshots, field feedback records, and feedback export |
 
 ### Roadmap principles
 
