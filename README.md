@@ -412,37 +412,150 @@ This project demonstrates product-management and product-ownership work beyond i
 9. **Iterative delivery:** evolving map controls, field pipeline selection, coordinate handling, offline repair capture, and operational dashboards through repeated feedback.
 10. **Product governance:** identifying authentication, authorization, data quality, model review, and auditability as prerequisites for departmental rollout.
 
-## Product Roadmap
+## Product Evolution and Roadmap
 
-Potential next increments are organized by product outcome rather than implementation layer:
+The roadmap reflects the product's progression from a mapping prototype into a connected planning and field-operations proof of concept. Future phases are organized around operational outcomes and adoption risk rather than individual technical features.
 
-### Operational readiness
+### Evolution to date
 
-- Department-managed identity and role-based permissions
-- Formal Firestore and Storage security rules
-- Audit reporting for infrastructure and repair changes
-- Service monitoring, alerting, and recovery objectives
+| Milestone | Product outcome | Delivered capabilities |
+| --- | --- | --- |
+| 1. Network foundation | Establish a shared digital representation of the water network | Web GIS map, Firebase persistence, pipeline and zone drawing, basic asset records, and layer controls |
+| 2. Operational workspace | Move from map viewing to infrastructure management | Geometry and attribute editing, deletion, dashboards, filters, map modes, navigation, onboarding, and consistent risk colours |
+| 3. Risk prioritization | Introduce model-assisted maintenance planning | Bundled XGBoost service, risk and confidence bands, product-facing Node API, deployment health checks, and resilient scoring queue |
+| 4. Field operations | Connect office planning with repair activity | Mobile network map, GPS and manual coordinates, nearby-pipeline matching, searchable selection, image evidence, depth updates, and repair history |
+| 5. Resilient feedback loop | Preserve field work and capture model evidence | Offline repair queue, reconnect synchronization, duplicate protection, prediction snapshots, ground-truth records, and feedback export |
 
-### Decision quality
+### Roadmap principles
 
-- Historical prediction views by pipeline
-- Model performance reporting against verified repairs
-- Candidate-model comparison with approval gates
-- Data-quality indicators for incomplete network records
+1. Secure and stabilize the current workflow before increasing functional scope.
+2. Validate adoption with real departmental users before automating decisions.
+3. Improve data quality before using feedback for model retraining.
+4. Keep model promotion subject to measurable evidence and human approval.
+5. Prioritize complete operational journeys over isolated feature volume.
 
-### Field effectiveness
+### Phase 1: Pilot readiness
 
-- Background synchronization policies
-- Repair assignment and work-order status
-- Evidence review and supervisor approval
-- Native distribution and managed device support
+**Objective:** make the existing proof of concept safe and observable enough for a controlled departmental pilot.
 
-### Portfolio planning
+**Planned outcomes**
 
-- Zone-level intervention planning
-- Budget and maintenance scenario comparison
-- Prioritized inspection programmes
-- Export and integration contracts for departmental systems
+- Department-managed authentication and role-based permissions
+- Production Firestore and Storage security rules
+- Audit records for infrastructure, repair, and administrative changes
+- Consistent validation rules and required-field definitions
+- Monitoring for API availability, prediction failures, and sync failures
+- Backup, restore, incident response, and data-retention procedures
+- Structured user acceptance testing with planners and field technicians
+
+**Release gate**
+
+- No critical security findings
+- Agreed pilot roles and permissions
+- Demonstrated backup and restore procedure
+- Successful completion of core web and mobile acceptance tests
+- Named operational owner and support process
+
+### Phase 2: Workflow adoption
+
+**Objective:** turn infrastructure records and mobile repairs into a managed operational workflow.
+
+**Planned outcomes**
+
+- Repair assignment, ownership, due dates, and work status
+- Supervisor review of repair evidence and record quality
+- Notifications for assigned, overdue, failed-sync, and high-risk work
+- Bulk import and validation for existing infrastructure records
+- Data-quality dashboard for missing, stale, or inconsistent attributes
+- Mobile release management and managed-device distribution
+- Usage analytics focused on workflow completion rather than page views
+
+**Success indicators**
+
+- Increased percentage of eligible repairs recorded digitally
+- Reduced time between field repair and office visibility
+- High successful synchronization rate
+- Reduction in incomplete infrastructure records
+
+### Phase 3: Decision quality and model governance
+
+**Objective:** evaluate whether model-assisted prioritization is accurate, useful, and governable.
+
+**Planned outcomes**
+
+- Historical prediction timeline for each pipeline
+- Feedback coverage and model-performance reporting
+- Review of low-risk predictions followed by verified repairs
+- Dataset versioning and data-quality checks before training
+- Controlled candidate-model retraining in a separate environment
+- Side-by-side comparison of current and candidate models
+- Model registry containing version, metrics, training period, and approval status
+- Human approval gate before any production model replacement
+- Drift monitoring for data and prediction distributions
+
+**Release gate**
+
+- Minimum agreed volume and coverage of verified outcomes
+- Candidate model evaluated against a held-out dataset
+- Documented improvement against agreed operational metrics
+- Approval from data, engineering, and operational stakeholders
+
+### Phase 4: Maintenance and portfolio planning
+
+**Objective:** extend PipeIQ from record management into intervention and investment planning.
+
+**Planned outcomes**
+
+- Zone-level risk and intervention planning
+- Prioritized inspection and preventive-maintenance programmes
+- Budget, consequence, and maintenance scenario comparison
+- Work programme views by geography, risk, cost, and urgency
+- Export contracts and APIs for existing departmental systems
+- Integration with enterprise GIS, identity, and work-management platforms
+- Management reporting for service levels and intervention outcomes
+
+**Success indicators**
+
+- Reduced time required to prepare inspection and maintenance plans
+- Clear traceability from risk evidence to funded intervention
+- Increased proportion of preventive work relative to reactive work
+- Consistent portfolio reporting across operational areas
+
+### Phase 5: Scale and continuous improvement
+
+**Objective:** establish a sustainable product operating model beyond the initial department or service area.
+
+**Planned outcomes**
+
+- Multi-area configuration and delegated administration
+- Service-level objectives and capacity planning
+- Formal product analytics and quarterly outcome reviews
+- Accessibility, performance, and device-compatibility assurance
+- Repeatable onboarding and training materials
+- Data stewardship roles and model-governance board
+- Prioritized backlog informed by operational evidence and user research
+
+### Roadmap dependencies
+
+| Dependency | Why it matters |
+| --- | --- |
+| Department identity provider | Required for controlled access and role management |
+| Approved Firebase security model | Protects operational and field evidence data |
+| Data ownership and stewardship | Defines who may correct, approve, retain, and export records |
+| Verified repair coverage | Required for meaningful model evaluation |
+| Monitoring and support ownership | Required before users depend on the product operationally |
+| Integration agreements | Required before connecting enterprise GIS or work-management systems |
+
+### Prioritization approach
+
+Roadmap items should be prioritized using four product criteria:
+
+1. **Operational value:** contribution to planning quality, field efficiency, or service reliability.
+2. **Risk reduction:** reduction of security, data, model, safety, or adoption risk.
+3. **Evidence strength:** quality of user research, operational data, and measured demand supporting the item.
+4. **Delivery feasibility:** dependency readiness, implementation effort, support cost, and organizational capacity.
+
+The roadmap is directional rather than a fixed delivery commitment. Phase timing should be set only after pilot sponsorship, user availability, data ownership, and operational support have been confirmed.
 
 ## Current Limitations
 
